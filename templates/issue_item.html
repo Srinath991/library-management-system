@@ -1,0 +1,205 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% extends 'base.html' %} {% block content %} {% for message in messages %}
+<div class="alert alert-{{message.tags}} rounded-0" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+<center>
+    <br />
+    <h1 class="display-5 fw-bold">Available Books</h1>
+    <br />
+    <div class="input-group container">
+        <input id="search" type="search" class="form-control rounded" placeholder="Search Book" aria-label="Search"
+            aria-describedby="search-addon" />
+    </div>
+</center>
+<br />
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th class="" scope="col">Book Name</th>
+                <th class="" scope="col">Author Name</th>
+                <th class="" scope="col">Subject</th>
+                <th class="" scope="col">Issue</th>
+
+            </tr>
+        </thead>
+        <tbody id="table_data">
+            {% for book in books %}
+            <tr>
+                <td>{{book.book_name}}</td>
+                <td>{{book.author_name}}</td>
+                <td>{{book.subject}}</td>
+                <td>
+                    <center>
+
+                        <button class="btn btn-outline-success btn-sm" id="{{book.id}}"
+                            onclick="issueBook('{{book.id}}')">
+                            <b>Issue</b>
+                        </button>
+                    </center>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- <button >Open Modal</button> -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form action="/issue/" method="post" class="issue-form">
+                {% csrf_token %}
+                <input type="hidden" name="book_id" id="bookIdInput" />
+                <label for="fname">Student id:</label><br>
+                <input type="text" id="id" name="student_id" placeholder="1CEXXYYZZZ"><br>
+                <input type="submit" value="Submit" class="issue-btn">
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    function issueBook(bookId) {
+        modal.style.display = "block";
+
+        // Set the book ID in a hidden input field in the form
+        document.getElementById('bookIdInput').value = bookId;
+    }
+    $(document).ready(function () {
+        $("#search").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#table_data tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+</script>
+
+<style>
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-radius: 10px;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 16px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .input-group {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    body {
+        background: linear-gradient(#87f4b5, #93cbf1);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .issue-btn {
+        margin-top: 10px;
+        background-color: #2A74F0;
+        color: white;
+    }
+</style>
+
+{% endblock %}
