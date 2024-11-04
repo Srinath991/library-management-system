@@ -134,12 +134,7 @@ This project is built with :
 #### Step 3
 
 - 🔃 Create a new pull request.
-## Creadits :
+## Credits :
 
-#### Django Library Management was created by Mohammad Burhan
+#### Django Library Management was created by srinath v
 
-
-## License
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
