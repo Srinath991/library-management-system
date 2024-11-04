@@ -13,10 +13,6 @@ This project is built with :
 ## 1. Clone this repository:
 >https://github.com/Srinath991/library-management-system.git'
 ## 2. Navigate to the project directory:
-
-```bash
-  cd Django-librarymanagement
-```
 ## 3 . Create a virtual environment:
 ```bash
   python3 -m venv env
