@@ -1,6 +1,6 @@
 # Django based  Library Management
 
-#### Django Library Management is a web application built with Django, Razorpay, and Tailwind CSS that provides an online platform for managing libraries.
+#### Django Library Management is a web application built with Django and Tailwind CSS that provides an online platform for managing libraries.
 
 This project is built with :
 
@@ -57,8 +57,6 @@ This project is built with :
       **or**
     - the number of days passed the return date of a particular book in the my fines page
 
-6.  Pay their fines online (powered by RazorPay)
-
 ##### Admin can
 
 1.  login to admin dashboard
@@ -110,7 +108,6 @@ This project is built with :
 
 ## 5. Borrow and return books as needed.
 
-## 6 . Make online payment using Razorpay payment gateway.
 
 
 ## Contributing 💡
