@@ -1,10 +1,6 @@
 # Django based  Library Management
 
 #### Django Library Management is a web application built with Django, Razorpay, and Tailwind CSS that provides an online platform for managing libraries.
-> 
-
-[![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/rajaprerak/MusicPlayer/commits/master)
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 This project is built with :
 
